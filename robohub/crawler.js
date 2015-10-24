@@ -45,16 +45,16 @@ var crawler = {
             return;
         }
 
-        var availableSteps = [], i, current, right, deadEnd;
+        var i, current, right, deadEnd;
 
         // шукаємо всі доступні напрямки пересування
         for (i = 0; i < this.dirLength; i++) {
             if (isFree(this.directions[i])) {
-                availableSteps.push(this.directions[i])
+                current = this.directions[i];
+
+                break;
             }
         }
-
-        current = availableSteps.shift();
 
         do {
             deadEnd = false;
@@ -70,9 +70,9 @@ var crawler = {
             }
 
             if (!deadEnd) {
-                this.progress = window[current].call();
-
                 map();
+
+                this.progress = window[current].call();
             }
         } while (this.progress === true);
     }
