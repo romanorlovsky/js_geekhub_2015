@@ -301,3 +301,57 @@ function insertionSort(arr) {
 
     return result;
 }
+
+function quickSort(arr) {
+    if (!Array.isArray(arr) && typeof arr !== 'string') {
+        throw new TypeError(arr + ' is not an array or string');
+    }
+
+    var currentObject = Object(arr),
+        length = currentObject.length,
+        i = 0, currentArray = [];
+
+    while (i < length) {
+        if (currentObject.hasOwnProperty(i.toString()) && currentObject[i] != undefined) {
+            currentArray.push(currentObject[i]);
+        }
+        i++;
+    }
+
+    var partition = function (part, left, right) {
+        var x = part[right],
+            i = left - 1, j, tmp;
+
+        for (j = left; j <= right - 1; j++) {
+            if (part[j] <= x) {
+                i++;
+
+                tmp = part[i];
+                part[i] = part[j];
+                part[j] = tmp;
+            }
+        }
+
+        i++;
+        tmp = part[i];
+        part[i] = part[right];
+        part[right] = tmp;
+
+        return i;
+    };
+
+    var quickSort = function (part, left, right) {
+        if (left >= right) {
+            return;
+        }
+
+        var i = partition(part, left, right);
+
+        quickSort(part, left, i - 1);
+        quickSort(part, i + 1, right);
+    };
+
+    quickSort(currentArray, 0, currentArray.length - 1);
+
+    return currentArray;
+}
