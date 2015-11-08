@@ -355,3 +355,59 @@ function quickSort(arr) {
 
     return currentArray;
 }
+
+function mergeSort(arr) {
+    if (!Array.isArray(arr) && typeof arr !== 'string') {
+        throw new TypeError(arr + ' is not an array or string');
+    }
+
+    var currentObject = Object(arr),
+        length = currentObject.length,
+        i = 0, currentArray = [];
+
+    while (i < length) {
+        if (currentObject.hasOwnProperty(i.toString()) && currentObject[i] != undefined) {
+            currentArray.push(currentObject[i]);
+        }
+        i++;
+    }
+
+    var merge = function (part, start, center, end) {
+        var i = start,
+            j = center + 1,
+            k, result = [];
+
+        for (k = start; k <= end; k++) {
+            if (j > end || (i <= center && part[i] <= part[j])) {
+                result[k] = part[i];
+                i++;
+            } else {
+                result[k] = part[j];
+                j++;
+            }
+        }
+
+        for (k = start; k <= end; k++) {
+            part[k] = result[k];
+        }
+    };
+
+    var mergeSort = function (part, start, end) {
+        if ((end - start) < 1) {
+            return;
+        }
+
+        var center = Math.floor((start + end) / 2);
+
+        if ((end - start) > 1) {
+            mergeSort(part, start, center);
+            mergeSort(part, center + 1, end);
+        }
+
+        merge(part, start, center, end);
+    };
+
+    mergeSort(currentArray, 0, currentArray.length - 1);
+
+    return currentArray;
+}
