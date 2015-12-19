@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration form</title>
+    <style type="text/css">
+        input.validation-error, textarea.validation-error {
+            border-color: red;
+        }
+        div.validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1 data-rule-required="true">Registration form</h1>
+
+<form action="" method="post" id="login-form" data-validate-form="true" novalidate>
+    <ul>
+        <li>
+            <input type="email" name="email" value="" placeholder="Email" data-rule-required="true" data-rule-email="true">
+        </li>
+        <li>
+            <input type="text" name="login" value="" placeholder="Login" data-rule-required="true" data-rule-range-length="3..16">
+        </li>
+        <li>
+            <input type="tel" name="tel" value="" placeholder="Telephone" data-rule-required="true" data-rule-telephone="true">
+        </li>
+        <li>
+            <input type="password" name="password" value="" placeholder="Password" data-rule-required="true" data-rule-min-length="8" data-rule-password="true">
+        </li>
+        <li>
+            <input type="password" name="confirm_password" value="" placeholder="Confirm password" data-rule-equal-to="[name='password']" data-rule-equal-to-msg="Password is not the same">
+        </li>
+        <li>
+            <input type="submit" value="Submit">
+        </li>
+    </ul>
+</form>
+<script src="dist/index.js"></script>
+</body>
+</html>
