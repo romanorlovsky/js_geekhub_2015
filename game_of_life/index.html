@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game of life</title>
+    <style type="text/css">
+        #game > div {
+            width: 10px;
+            height: 10px;
+            float: left;
+            -webkit-box-shadow: inset 0px 0px 8px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow: inset 0px 0px 8px 0px rgba(50, 50, 50, 0.75);
+            box-shadow: inset 0px 0px 8px 0px rgba(50, 50, 50, 0.75);
+        }
+
+        #game > div.clear {
+            height: 0;
+            width: 100%;
+        }
+
+        #game > div.active {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="game"></div>
+<script src="dist/index.js"></script>
+</body>
+</html>
