@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <title>Game of life</title>
     <style type="text/css">
+        #game {
+            overflow: hidden;
+        }
+
         #game > div {
-            width: 10px;
-            height: 10px;
+            width: 20px;
+            height: 20px;
             float: left;
             -webkit-box-shadow: inset 0px 0px 8px 0px rgba(50, 50, 50, 0.75);
             -moz-box-shadow: inset 0px 0px 8px 0px rgba(50, 50, 50, 0.75);
@@ -16,6 +20,8 @@
         #game > div.clear {
             height: 0;
             width: 100%;
+            float: none;
+            clear: both;
         }
 
         #game > div.active {
